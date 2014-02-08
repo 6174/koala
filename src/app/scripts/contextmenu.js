@@ -96,13 +96,7 @@ folderMenu.append(new gui.MenuItem({type: 'separator'}));
 folderMenu.append(new gui.MenuItem({
     label: il8n.__('Rename'),
     click: function () {
-        var target = $('#' + currentContextFolderId);
-        var oldName = target.text(),
-            input = $('<input class="changeName"/>').val(oldName).focus();
-
-        target.html(input);
-        input.focus();
-        target.trigger('click');
+        $('#' + currentContextFolderId).trigger('rename');
     }
 }));
 

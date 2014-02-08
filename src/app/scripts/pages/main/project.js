@@ -193,6 +193,17 @@ $('#folders').bind('deleteItem', function (event, deleteId) {
     });
 });
 
+//rename project
+$('#folders').on('rename', 'li', function () {
+    var target = $(this);
+    var oldName = target.text(),
+        input = $('<input class="changeName"/>').val(oldName).focus();
+
+    target.html(input);
+    input.focus();
+    target.trigger('click');
+});
+
 //update project file list
 $('#refresh').click(function () {
     var id = global.activeProject;
@@ -237,6 +248,7 @@ $(document).on('blur', '#folders .changeName', function () {
     storage.updateJsonDb();
     target.html(name);
 });
-$(document).on('keyup', '#folders .changeName', function (e) {
+$(document).on('keydown', '#folders .changeName', function (e) {
     if (e.which === 13) $(this).trigger('blur');
+    else if (e.which === 27) $(this).val("").trigger('blur');
 });

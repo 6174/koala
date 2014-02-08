@@ -107,3 +107,8 @@ $(document).on(process.platform === 'darwin' ? 'keydown.backspace' : 'keydown.de
         $('#folders').trigger('deleteItem', [$('#folders li.active').data('id')]);
     }
 });
+
+//F2 to rename folders
+$(document).on(process.platform === 'darwin' ? 'keydown.return' : 'keydown.f2', function () {
+    $('#folders li.active').trigger('rename');
+});
